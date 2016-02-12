@@ -12,24 +12,29 @@ Make arbitrary queries about the posterior distribution given any amount of evid
 ## Example
 example.go implements an experiment in which a BN is inferred and used as a classifier for the iris data set.
 
-### Some notes
+##### Some notes
 The example uses a very simple genetic algorithm to select a network topology.  The provided InferBayesianNetwork function evaluates the current model using the model likelihood.  For a classification problem like this, it would be better to replace the InferBayesianNetwork function with a function that evaluates the model based on how well the class is predicted instead of general model likelihood.  You would also typically use a separate train and testing set, which is not done in the example.
 
-### Output
+##### Output
 Inferred topology:
-sepal_width
-	 petal_width
-petal_width
-	 species
-species
-	 petal_length
-petal_length
-	 sepal_length
+
+sepal_width -> petal_width
+
+petal_width -> species
+
+species ->petal_length
+
+petal_length -> sepal_length
+
 sepal_length
 
 Model log likelihood -409.7831195345815
 confusionMatrix:
+
 [50 0 0]
+
 [0 47 3]
+
 [0 1 49]
+
 precision:  [1 0.94 0.98]
